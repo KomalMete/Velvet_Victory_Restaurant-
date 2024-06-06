@@ -24,9 +24,12 @@ public class Food {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "name")
+	@Column(name = "food_name")
 	private String name;
 	
-	@Column(name = "discription")
+	@Column(name = "food_discription")
 	private String discription;
+	
+	@Column(name = "food_price")
+	private double price;
 }
