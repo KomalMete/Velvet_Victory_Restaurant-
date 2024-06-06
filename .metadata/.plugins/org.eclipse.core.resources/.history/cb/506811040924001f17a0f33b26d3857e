@@ -1,0 +1,6 @@
+package com.velvetvictory.models;
+
+@Entity
+public class FoodCategory {
+
+}
