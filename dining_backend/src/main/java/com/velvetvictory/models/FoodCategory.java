@@ -17,8 +17,9 @@ import lombok.ToString;
 @Entity
 @Setter
 @Getter
-@AllArgsConstructor
+@NoArgsConstructor
 @ToString
+@AllArgsConstructor
 @Table(name = "food_categories")
 public class FoodCategory {
 	
@@ -28,7 +29,6 @@ public class FoodCategory {
 	
 	@Column(name = "category_name")
 	private String categoryName;
-	
 	
 
 }

@@ -1,0 +1,12 @@
+package com.velvetvictory.dto.response;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class CustomEntityResponse {
+
+	 private String response;
+
+	 private int status;
+}

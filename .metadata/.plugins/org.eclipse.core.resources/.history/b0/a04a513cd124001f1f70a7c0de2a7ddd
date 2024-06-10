@@ -1,0 +1,37 @@
+package com.velvetvictory.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.velvetvictory.dto.request.FoodCategoryRequest;
+import com.velvetvictory.models.FoodCategory;
+import com.velvetvictory.repository.FoodCategoryRepository;
+import com.velvetvictory.service.FoodCategoryService;
+
+@Service
+public class FoodCategoryServiceImpl implements FoodCategoryService{
+	
+	@Autowired
+	private FoodCategoryRepository foodCategoryRepo;
+
+	@Override
+	public Object addFoodCategory(FoodCategoryRequest foodCategoryRequest) {
+		
+		if(foodCategoryRequest != null)
+		{
+			System.out.println("in if block");
+			FoodCategory category = new FoodCategory();
+			category.setId(foodCategoryRequest.getId());
+			category.setCategoryName(foodCategoryRequest.getCategoryName());
+			foodCategoryRepo.save(category);
+			System.out.println("food category save");
+			return "FoodCategory saved successfully..";
+		}
+		else
+		{
+			return "FoodCategory name cant be null..";
+		}
+		
+	}
+
+}

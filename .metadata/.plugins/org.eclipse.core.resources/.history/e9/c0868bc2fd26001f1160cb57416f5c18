@@ -1,0 +1,41 @@
+spring.application.name=Velvet_Victory
+
+#Tomcat server port number 8080
+server.port=8080
+#context path default value : empty
+#server.servlet.context-path=/ems
+#DB properties
+spring.datasource.url=jdbc:mysql://localhost:3306/Velvet_Victory?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=@uj.di.sa.ko.@84
+# JPA properties
+spring.jpa.show-sql = true
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+#logging.level.org.springframework.orm.hibernate5=DEBUG
+
+# Spring MVC ViewResolver related
+#spring.mvc.view.prefix=/WEB-INF/views
+#spring.mvc.view.suffix=.jsp
+#Disable open session in view 
+spring.jpa.open-in-view=false
+#property to disable hibernateLazyInitializer during initialized proxies
+#spring.jackson.serialization.FAIL_ON_EMPTY_BEANS=false
+spring.main.allow-circular-references=true
+
+
+SECRET_KEY=mySecretKey1234
+#JWT expiration timeout 24*3600*1000
+EXP_TIMEOUT=86400000
+#file related data
+spring.servlet.multipart.enabled=true
+spring.servlet.multipart.max-file-size=10MB
+spring.servlet.multipart.max-request-size=10MB
+
+disk.upload.basepath=C:\Users\DELL\Desktop\onlineShopping\Online_Shopping\frontend\src\Images
+
+logging.level.org.springframework.web=DEBUG
+logging.level.com.velvetvictory=DEBUG
+
+
+
