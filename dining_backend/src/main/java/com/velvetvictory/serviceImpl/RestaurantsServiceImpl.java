@@ -32,4 +32,24 @@ public class RestaurantsServiceImpl implements RestaurantsService{
 		}
 	}
 
+	@Override
+	public Object getAllRestaurants() {
+		// TODO Auto-generated method stub
+		return restaurantRepo.findAll();
+	}
+
+	@Override
+	public Object deleteRestaurantById(Long restaurantId) {
+		
+		if(restaurantRepo.existsById(restaurantId))
+		{
+			restaurantRepo.deleteById(restaurantId);
+			return "Restaurant deleted successfully..";
+		}
+		else
+		{
+			return "Restaurant doesnt exists";
+		}
+	}
+
 }

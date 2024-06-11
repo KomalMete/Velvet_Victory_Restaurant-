@@ -3,9 +3,12 @@ package com.velvetvictory.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.velvetvictory.dto.request.RestaurantsRequest;
@@ -32,5 +35,34 @@ public class RestaurantsController {
 	            return  new ResponseEntity( new CustomEntityResponse(e.getMessage(), -1), HttpStatus.INTERNAL_SERVER_ERROR);
 	        }
 	}
+	
+	
+	@GetMapping("/getAllRestaurants")
+	public ResponseEntity<?> getAllRestaurants()
+	{
+		try
+		{
+			System.out.println("in try block");
+			return new ResponseEntity(new EntityResponse(restaurantsService.getAllRestaurants(), 0), HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			System.out.println("in catch block");
+			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@DeleteMapping("/deleteRestaurantById")
+	public ResponseEntity<?> deleteRestaurantById(@RequestParam (name = "restaurantId")Long restaurantId)
+    {
+        try
+        {
+            return new ResponseEntity(new EntityResponse(restaurantsService.deleteRestaurantById(restaurantId), 0), HttpStatus.OK);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity<>(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 	
 }

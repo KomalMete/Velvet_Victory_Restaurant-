@@ -6,4 +6,8 @@ public interface RestaurantsService {
 
 	Object addRestaurant(RestaurantsRequest restaurantsRequest);
 
+	Object getAllRestaurants();
+
+	Object deleteRestaurantById(Long restaurantId);
+
 }
