@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Registration Email</title>
+</head>
+<body>
+    <div class="container">
+        <h4><b>Welcome to Velvet Victory </b>, <span th:text="${firstName}"></span>&nbsp;<span th:text="${lastName}"></span>!</h4>
+        <h6>Your Velvet Victory account created successfully...</h6>
+        
+    </div>
+</body>
+</html>

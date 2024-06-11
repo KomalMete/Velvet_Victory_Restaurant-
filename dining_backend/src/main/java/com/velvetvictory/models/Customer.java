@@ -51,5 +51,8 @@ public class Customer {
 	@NotEmpty(message = "password required")
 	private String password;
 	
+	@Column(length = 20)
+	@NotEmpty
+	private String role;
 	
 }

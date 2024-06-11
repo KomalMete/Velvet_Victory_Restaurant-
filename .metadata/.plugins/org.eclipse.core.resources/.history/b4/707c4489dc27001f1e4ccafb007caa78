@@ -1,0 +1,5 @@
+package com.velvetvictory.serviceImpl;
+
+public class CustomerServiceImpl {
+
+}

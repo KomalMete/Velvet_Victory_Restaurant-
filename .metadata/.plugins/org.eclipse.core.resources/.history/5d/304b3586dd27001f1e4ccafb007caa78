@@ -1,0 +1,28 @@
+package com.velvetvictory.dto.request;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+public class CustomerRequest {
+
+	
+	private Long id;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private String contact;
+	
+	private String email;
+
+	private String password;
+
+	private String role;
+	
+}

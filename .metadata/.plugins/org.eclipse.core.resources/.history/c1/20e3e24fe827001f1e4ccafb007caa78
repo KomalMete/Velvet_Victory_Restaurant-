@@ -1,0 +1,86 @@
+package com.velvetvictory.serviceImpl;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
+
+import com.velvetvictory.dto.request.CustomerRequest;
+import com.velvetvictory.models.Customer;
+import com.velvetvictory.repository.CustomerRepository;
+import com.velvetvictory.service.CustomerService;
+
+import lombok.Value;
+
+@Service
+public class CustomerServiceImpl implements CustomerService{
+	
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private JavaMaiSender javaMailSender;
+
+	    @org.springframework.beans.factory.annotation.Value("${spring.mail.username}")
+	    private String fromEmail;
+
+	    @Autowired
+	    private TemplateEngine templateEngine;
+
+	@Override
+	public Object addCustomer(CustomerRequest customerRequest)
+	{
+		
+		if(customerRequest != null)
+		{
+			Customer customer = new Customer();
+			
+			customer.setId(customerRequest.getId());
+			customer.setFirstName(customerRequest.getFirstName());
+			customer.setLastName(customerRequest.getLastName());
+			customer.setEmail(customerRequest.getEmail());
+			customer.setPassword(customerRequest.getPassword());
+			customer.setContact(customerRequest.getContact());
+			customer.setRole(customerRequest.getRole());
+			
+			
+			
+	      //email with html-content
+          try{
+              Context context = new Context();
+              context.setVariable("name", emp.getName());
+              this.sendEmailWithTemplate("komalmete8@gmail.com", "Using Template", context);
+              customerRepository.save(customer);
+  				return "Customer Registration Successfull..";
+          }
+          catch (MessagingException e)
+          {
+              e.printStackTrace();
+             return "Employee Details not saved..";
+          }
+		}
+		else
+		{
+			return "Customer Registration Not Successfull..";
+		}
+	}
+	
+
+    public void sendEmailWithTemplate(String to, String subject, Context context) throws MessagingException {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "utf-8");
+
+        mimeMessageHelper.setFrom(fromEmail);
+        mimeMessageHelper.setTo(to);
+        mimeMessageHelper.setSubject(subject);
+
+        String htmlContent = templateEngine.process("emailTemplate", context);
+        mimeMessageHelper.setText(htmlContent,true);
+
+        javaMailSender.send(mimeMessage);
+
+    }
+
+}
