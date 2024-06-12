@@ -30,5 +30,7 @@ public class FoodRequest {
 
 	private double price;
 	
+	private String image;
+	
 	private FoodCategory foodCategory;
 }
