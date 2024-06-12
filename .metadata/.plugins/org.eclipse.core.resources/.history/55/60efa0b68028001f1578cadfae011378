@@ -1,0 +1,10 @@
+package com.velvetvictory.serviceImpl;
+
+import org.springframework.stereotype.Service;
+
+import com.velvetvictory.service.FoodService;
+
+@Service
+public class FoodServiceImpl implements FoodService {
+
+}

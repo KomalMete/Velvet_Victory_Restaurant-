@@ -1,0 +1,9 @@
+package com.velvetvictory.serviceImpl;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class FileStorageService {
+
+	public final String storagePath = "D:\\Hotel_Management\\Velvet_Victory";
+}

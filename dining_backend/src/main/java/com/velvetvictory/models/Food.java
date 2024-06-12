@@ -5,7 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,4 +37,12 @@ public class Food {
 	
 	@Column(name = "food_price")
 	private double price;
+	
+	@Column(name = "image")
+	@NotEmpty(message = "Image cant be null")
+	private String image;
+	
+	@ManyToOne
+	@JoinColumn(name = "foodCategory_id")
+	private FoodCategory foodCategory;
 }
