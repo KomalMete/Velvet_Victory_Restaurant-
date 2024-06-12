@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.velvetvictory.dto.request.FoodRequest;
 import com.velvetvictory.dto.response.CustomEntityResponse;
 import com.velvetvictory.dto.response.EntityResponse;
@@ -23,11 +24,14 @@ public class FoodController {
 	private FoodService foodService;
 	
 	@PostMapping("/saveOrUpdateFood")
-	public ResponseEntity<?> saveOrUpdateFood(@RequestBody FoodRequest foodRequest, 
+	public ResponseEntity<?> saveOrUpdateFood(@RequestParam (name = "foodRequest") String FoodRequestJson, 
 									@RequestParam (name = "file") MultipartFile file)
 	{
 		try
 		{
+			ObjectMapper objectMapper = new ObjectMapper();
+			FoodRequest foodRequest = objectMapper.readValue(FoodRequestJson, FoodRequest.class);
+			
 			System.out.println("in controller try block");
 			return new ResponseEntity(new EntityResponse(foodService.saveOrUpdateFood(foodRequest, file), 0), HttpStatus.OK);
 		}

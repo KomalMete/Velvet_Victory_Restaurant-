@@ -1,10 +1,15 @@
 package com.velvetvictory.models;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -28,4 +33,11 @@ public class Restaurants {
 	@Column(name = "restaurant_name")
 	@NotEmpty(message = "Restaurant Name cannot be empty")
 	private String restaurantName;
+	
+	@ManyToMany
+	@JoinTable(
+			name = "restaurants_food",
+			joinColumns = @JoinColumn(name = "restaurant_id"),
+			inverseJoinColumns = @JoinColumn(name = "food_id"))
+	private Set<Food> foods;
 }

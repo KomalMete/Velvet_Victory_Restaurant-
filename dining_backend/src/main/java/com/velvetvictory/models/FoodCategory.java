@@ -30,5 +30,5 @@ public class FoodCategory {
 	@Column(name = "category_name")
 	private String categoryName;
 	
-
+	
 }
