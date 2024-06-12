@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 import com.velvetvictory.models.FoodCategory;
+import com.velvetvictory.models.Restaurants;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,4 +32,6 @@ public class FoodRequest {
 	private double price;
 	
 	private FoodCategory foodCategory;
+	
+	private Restaurants restaurants;
 }
