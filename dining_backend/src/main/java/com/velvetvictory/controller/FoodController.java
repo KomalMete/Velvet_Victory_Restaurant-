@@ -1,8 +1,12 @@
 package com.velvetvictory.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +42,23 @@ public class FoodController {
 		catch(Exception e)
 		{
 			System.out.println("in controller catch block");
+			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/searchByFoodName")
+	public ResponseEntity<?> searchByFoodName(@RequestParam (required = false , defaultValue = "0") Integer pageNo,
+											  @RequestParam (required = false , defaultValue = "5") Integer pageSize,
+											  @RequestParam (name = "name") String name
+											)
+	{
+		try
+		{
+			Pageable pageable = PageRequest.of(pageNo,pageSize);
+			return new ResponseEntity( new EntityResponse(foodService.searchByFoodName(name,pageable), 0), HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
 			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.BAD_REQUEST);
 		}
 	}

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -62,17 +63,17 @@ public class FoodServiceImpl implements FoodService {
 				return "Food details saved successfully..";
 			}
 			
-			//Set<Restaurants> restaurants = new HashSet<>();
-			
-			Long restaurantId = foodRequest.getRestaurants().getId();
-			Restaurants restaurant = restaurantsRepo.findById(restaurantId).orElse(null);
-			
-			if(restaurant != null)
-			{
-				restaurantsRepo.save(restaurant);
-			}
-			
-			
+//			//Set<Restaurants> restaurants = new HashSet<>();
+//			
+//			//Long restaurantId = foodRequest.getRestaurants().getId();
+//			Restaurants restaurant = restaurantsRepo.findById(restaurantId).orElse(null);
+//			
+//			if(restaurant != null)
+//			{
+//				restaurantsRepo.save(restaurant);
+//			}
+//			
+//			//food.setRestaurants(foodRequest.getRestaurants());
 		} 
 		catch (IOException e)
 		{
@@ -80,6 +81,20 @@ public class FoodServiceImpl implements FoodService {
 			return "Food details doesnt exist..";
 		}
 		
+	}
+
+
+	@Override
+	public Object searchByFoodName(String name, Pageable pageable) {
+		
+		if(name != null && !name.isEmpty())
+		{
+		   return foodRepo.findByName(name);
+		}
+		else
+		{
+			return "Food doesnt exist..";
+		}
 	}
 
 }
