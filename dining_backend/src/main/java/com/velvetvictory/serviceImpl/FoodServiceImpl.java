@@ -89,7 +89,7 @@ public class FoodServiceImpl implements FoodService {
 		
 		if(name != null && !name.isEmpty())
 		{
-		   return foodRepo.findByName(name);
+		   return foodRepo.findByName(name,pageable);
 		}
 		else
 		{
