@@ -51,4 +51,14 @@ public class Food {
 	
 	@ManyToMany(mappedBy = "foods")
 	private Set<Restaurants> restaurants;
+	
+	 public void addRestaurant(Restaurants restaurant) {
+	        this.restaurants.add(restaurant);
+	        restaurant.getFoods().add(this);
+	    }
+
+	    public void removeRestaurant(Restaurants restaurant) {
+	        this.restaurants.remove(restaurant);
+	        restaurant.getFoods().remove(this);
+	    }
 }

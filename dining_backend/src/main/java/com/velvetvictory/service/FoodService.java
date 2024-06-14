@@ -11,4 +11,6 @@ public interface FoodService {
 
 	Object searchByFoodName(String name, Pageable pageable);
 
+	Object getFoodById(Long id);
+
 }

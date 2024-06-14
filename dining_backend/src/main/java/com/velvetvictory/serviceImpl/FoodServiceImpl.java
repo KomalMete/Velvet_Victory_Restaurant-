@@ -39,47 +39,54 @@ public class FoodServiceImpl implements FoodService {
 			if(foodRepo.existsById(foodRequest.getId()))
 			{
 				food = foodRepo.findById(foodRequest.getId()).get();
-				food.setName(foodRequest.getName());
-				food.setDiscription(foodRequest.getDiscription());
-				food.setPrice(foodRequest.getPrice());
-				food.setFoodCategory(foodRequest.getFoodCategory());
-				food.setImage(imagePath);
-				//food.setRestaurants(foodRequest.getRestaurants());
-				
-				foodRepo.save(food);
-				return "Food details updated successfully..";
 			}
 			else
 			{
 				food = new Food();
 				food.setId(foodRequest.getId());
-				food.setName(foodRequest.getName());
-				food.setDiscription(foodRequest.getDiscription());
-				food.setPrice(foodRequest.getPrice());
-				food.setFoodCategory(foodRequest.getFoodCategory());
-				food.setImage(imagePath);
-				
-				foodRepo.save(food);
-				return "Food details saved successfully..";
 			}
-			
-//			//Set<Restaurants> restaurants = new HashSet<>();
-//			
-//			//Long restaurantId = foodRequest.getRestaurants().getId();
-//			Restaurants restaurant = restaurantsRepo.findById(restaurantId).orElse(null);
-//			
-//			if(restaurant != null)
-//			{
-//				restaurantsRepo.save(restaurant);
-//			}
-//			
-//			//food.setRestaurants(foodRequest.getRestaurants());
+			food.setName(foodRequest.getName());
+			food.setDiscription(foodRequest.getDiscription());
+			food.setPrice(foodRequest.getPrice());
+			food.setFoodCategory(foodRequest.getFoodCategory());
+			food.setImage(imagePath);
+		
+			//for restaurant
+		    Set<Restaurants> restaurants = new HashSet<>();
+		    
+		    for(Restaurants res : foodRequest.getRestaurants())
+		    {
+		    	if(!restaurantsRepo.existsById(res.getId()))
+		    	{
+		    		restaurantsRepo.save(res);
+		    	}
+		    	 food.addRestaurant(res);
+		    }
+		    food.setRestaurants(restaurants);
+		    foodRepo.save(food);
+		    return "Food details saved successfully..";
+		    
+		    //this type of entry is expected in postman
+//		    {
+//		        "id" : 0,
+//		        "name" : "Margherita Semizza (Half Pizza)",
+//		        "discription" : "Mozzarella Cheese, Fresh Parsley. A classic treat for every cheese lover",
+//		        "price" : 175,
+//		        "foodCategory" : {
+//		            "id" : 5
+//		        },
+//		    "restaurants" : [{ "id" : 3
+//		    }]
+//		    }
 		} 
-		catch (IOException e)
-		{
-			e.printStackTrace();
-			return "Food details doesnt exist..";
-		}
+		
+		catch (IOException e) {
+            e.printStackTrace();
+            return "Error saving food details: " + e.getMessage();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Unexpected error: " + e.getMessage();
+        }
 		
 	}
 
@@ -94,6 +101,21 @@ public class FoodServiceImpl implements FoodService {
 		else
 		{
 			return "Food doesnt exist..";
+		}
+	}
+
+
+	@Override
+	public Object getFoodById(Long id) {
+		
+		if(foodRepo.existsById(id))
+		{
+			Food food =  foodRepo.findById(id).get();
+			return food;
+		}
+		else
+		{
+			return "Food doesnt exist...";
 		}
 	}
 

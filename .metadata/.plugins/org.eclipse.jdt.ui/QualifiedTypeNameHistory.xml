@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.validation.constraints.NotEmpty"/>
-    <fullyQualifiedTypeName name="javax.validation.constraints.Email"/>
     <fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
     <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
     <fullyQualifiedTypeName name="java.lang.Long"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="org.springdoc.core.converters.models.Pageable"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.PageRequest"/>
     <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
 </qualifiedTypeNameHistroy>

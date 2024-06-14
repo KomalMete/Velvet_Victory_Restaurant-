@@ -1,5 +1,7 @@
 package com.velvetvictory.dto.request;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 import com.velvetvictory.models.FoodCategory;
 import com.velvetvictory.models.Restaurants;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +23,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class FoodRequest {
 
@@ -33,5 +37,5 @@ public class FoodRequest {
 	
 	private FoodCategory foodCategory;
 	
-	private Restaurants restaurants;
+	private Set<Restaurants> restaurants;
 }

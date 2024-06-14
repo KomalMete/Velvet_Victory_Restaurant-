@@ -40,4 +40,14 @@ public class Restaurants {
 			joinColumns = @JoinColumn(name = "restaurant_id"),
 			inverseJoinColumns = @JoinColumn(name = "food_id"))
 	private Set<Food> foods;
+	
+	public void addFood(Food food) {
+        this.foods.add(food);
+        food.getRestaurants().add(this);
+    }
+
+    public void removeFood(Food food) {
+        this.foods.remove(food);
+        food.getRestaurants().remove(this);
+    }
 }
