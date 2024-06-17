@@ -1,5 +1,7 @@
 package com.velvetvictory.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +46,51 @@ public class AddressServiceImpl implements AddressService {
 		
 		addressRepo.save(address);
 		return "Address details saved successfully..";
+	}
+
+	@Override
+	public Object getAllAddress(String email) 
+	{
+		
+		
+		if(email != null)
+		{
+			Customer customer = customerRepo.findByEmail(email);
+			
+			
+			List<Address> list = addressRepo.findByCustomerEmail(customer.getEmail());
+			return list;
+		}
+		else
+		{
+			return "email can't be null";
+		}
+		
+	}
+
+	@Override
+	public Object deleteAddressById(Long addressId, String email) 
+	{
+		if(email != null)
+		{
+			Customer customer = customerRepo.findByEmail(email);
+			
+			Address address = addressRepo.findById(addressId).orElseThrow(() -> new IllegalArgumentException("Address not found.."));
+			
+			//List<Address> list = addressRepo.findByCustomerEmail(customer.getEmail());
+			
+			if(!address.getCustomer().getEmail().equals(email))
+			{
+				return "U are not authorized to delete an address";
+			}
+			addressRepo.delete(address);
+			return "Address deleted successfully...";
+		}
+		else
+		{
+			return "email can't be null";
+		}
+		
 	}
 
 }

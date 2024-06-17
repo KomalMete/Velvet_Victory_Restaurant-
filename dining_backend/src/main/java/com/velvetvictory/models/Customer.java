@@ -55,5 +55,6 @@ public class Customer {
 	@Column(length = 20)
 	@NotEmpty
 	private String role;
-	
+
+
 }
