@@ -1,0 +1,17 @@
+package com.velvetvictory.serviceImpl;
+
+import org.springframework.stereotype.Service;
+
+import com.velvetvictory.dto.request.AddressRequest;
+import com.velvetvictory.service.AddressService;
+
+@Service
+public class AddressServiceImpl implements AddressService {
+
+	@Override
+	public Object addAddress(AddressRequest addressRequest) {
+		
+		
+	}
+
+}

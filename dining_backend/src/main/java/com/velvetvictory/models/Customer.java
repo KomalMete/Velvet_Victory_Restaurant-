@@ -23,6 +23,7 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @ToString
+@AllArgsConstructor
 @Table(name = "customers")
 public class Customer {
 

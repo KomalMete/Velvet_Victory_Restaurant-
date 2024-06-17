@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
     <typeInfo handle="=dining_backend/C:\/Users\/DELL\/.m2\/repository\/org\/springframework\/data\/spring-data-jpa\/2.7.12\/spring-data-jpa-2.7.12.jar=/maven.pomderived=/true=/=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.data=/=/maven.artifactId=/spring-data-jpa=/=/maven.version=/2.7.12=/=/maven.scope=/compile=/&lt;org.springframework.data.jpa.repository(JpaRepository.class[JpaRepository" modifiers="1537" timestamp="1696882112762"/>
-    <typeInfo handle="=dining_backend/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.velvetvictory.service{FoodService.java[FoodService" modifiers="513" timestamp="1718200338950"/>
+    <typeInfo handle="=dining_backend/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.velvetvictory.service{FoodService.java[FoodService" modifiers="513" timestamp="1718339679887"/>
     <typeInfo handle="=dining_backend/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.velvetvictory.repository{FoodCategoryRepository.java[FoodCategoryRepository" modifiers="513" timestamp="1717764992017"/>
 </typeInfoHistroy>

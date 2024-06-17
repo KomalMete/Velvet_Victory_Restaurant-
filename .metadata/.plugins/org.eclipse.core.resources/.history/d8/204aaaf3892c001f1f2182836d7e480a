@@ -1,0 +1,39 @@
+package com.velvetvictory.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.velvetvictory.dto.request.AddressRequest;
+import com.velvetvictory.models.Address;
+import com.velvetvictory.repository.AddressRepository;
+import com.velvetvictory.service.AddressService;
+
+@Service
+public class AddressServiceImpl implements AddressService {
+
+	@Autowired
+	private AddressRepository addressRepo;
+	
+	@Override
+	public Object saveOrUpdateAddress(AddressRequest addressRequest) {
+		
+		Address address;
+		if(addressRepo.existsById(addressRequest.getId()))
+		{
+			address = addressRepo.findById(addressRequest.getId()).get();
+		}
+		else
+		{
+			address = new Address();
+		}
+		address.setId(addressRequest.getId());
+		address.setCity(addressRequest.getCity());
+		address.setAddress(addressRequest.getAddress());
+		address.setLandmark(addressRequest.getLandmark());
+		address.setPincode(addressRequest.getPincode());
+		address.setState(addressRequest.getState());
+		address.setCustomer(addressRequest.getCustomer());
+		return null;
+	}
+
+}

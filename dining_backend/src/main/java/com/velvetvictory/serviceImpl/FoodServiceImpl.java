@@ -51,17 +51,28 @@ public class FoodServiceImpl implements FoodService {
 			food.setFoodCategory(foodRequest.getFoodCategory());
 			food.setImage(imagePath);
 		
+			//foodRepo.save(food);
+			
 			//for restaurant
 		    Set<Restaurants> restaurants = new HashSet<>();
 		    
 		    for(Restaurants res : foodRequest.getRestaurants())
 		    {
-		    	if(!restaurantsRepo.existsById(res.getId()))
+		    	if(restaurantsRepo.existsById(res.getId()))
 		    	{
+		    		res = restaurantsRepo.findById(res.getId()).get();
+		    	}
+		    	else
+		    	{
+		    		res.addFood(food);
 		    		restaurantsRepo.save(res);
 		    	}
+		    	
 		    	 food.addRestaurant(res);
+		    	 restaurants.add(res);
+		    	 
 		    }
+		    
 		    food.setRestaurants(restaurants);
 		    foodRepo.save(food);
 		    return "Food details saved successfully..";

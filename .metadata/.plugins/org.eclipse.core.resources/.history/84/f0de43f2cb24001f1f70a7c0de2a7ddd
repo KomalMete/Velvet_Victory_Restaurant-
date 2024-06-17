@@ -1,5 +1,0 @@
-package com.velvetvictory.dto.response;
-
-public class CustomEntityResponse {
-
-}

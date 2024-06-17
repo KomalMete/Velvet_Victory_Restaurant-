@@ -1,5 +1,6 @@
 package com.velvetvictory.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -50,7 +51,7 @@ public class Food {
 	private FoodCategory foodCategory;
 	
 	@ManyToMany(mappedBy = "foods")
-	private Set<Restaurants> restaurants;
+	private Set<Restaurants> restaurants = new HashSet<>();
 	
 	 public void addRestaurant(Restaurants restaurant) {
 	        this.restaurants.add(restaurant);

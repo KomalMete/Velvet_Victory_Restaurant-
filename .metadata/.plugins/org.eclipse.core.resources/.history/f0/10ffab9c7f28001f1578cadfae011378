@@ -1,7 +1,0 @@
-package com.velvetvictory.serviceImpl;
-
-import com.velvetvictory.service.FoodService;
-
-public class FoodServiceImpl implements FoodService {
-
-}

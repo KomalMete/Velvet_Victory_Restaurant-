@@ -1,5 +1,6 @@
 package com.velvetvictory.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -39,7 +40,7 @@ public class Restaurants {
 			name = "restaurants_food",
 			joinColumns = @JoinColumn(name = "restaurant_id"),
 			inverseJoinColumns = @JoinColumn(name = "food_id"))
-	private Set<Food> foods;
+	private Set<Food> foods =  new HashSet<>();
 	
 	public void addFood(Food food) {
         this.foods.add(food);
