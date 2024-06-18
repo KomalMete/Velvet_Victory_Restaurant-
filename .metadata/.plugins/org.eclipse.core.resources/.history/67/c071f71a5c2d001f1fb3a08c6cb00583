@@ -1,0 +1,18 @@
+package com.velvetvictory.dto.request;
+
+public class AdminRequest {
+
+private Long id;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private String contact;
+	
+	private String email;
+
+	private String password;
+
+	private String role;
+}

@@ -1,0 +1,22 @@
+package com.velvetvictory.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.velvetvictory.dto.request.AdminRequest;
+import com.velvetvictory.repository.AdminRepository;
+import com.velvetvictory.service.AdminService;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+	
+	@Autowired
+	private AdminRepository adminRepo;
+
+	@Override
+	public Object saveOrUpdateAdmin(AdminRequest adminRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

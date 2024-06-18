@@ -1,0 +1,9 @@
+package com.velvetvictory.service;
+
+import com.velvetvictory.dto.request.AdminRequest;
+
+public interface AdminService {
+
+	Object saveOrUpdateAdmin(AdminRequest adminRequest);
+
+}

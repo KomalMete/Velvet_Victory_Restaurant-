@@ -1,0 +1,19 @@
+package com.velvetvictory.serviceImpl;
+
+import org.springframework.stereotype.Service;
+
+import com.velvetvictory.dto.request.AdminRequest;
+import com.velvetvictory.service.AdminService;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+	
+	
+
+	@Override
+	public Object saveOrUpdateAdmin(AdminRequest adminRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
