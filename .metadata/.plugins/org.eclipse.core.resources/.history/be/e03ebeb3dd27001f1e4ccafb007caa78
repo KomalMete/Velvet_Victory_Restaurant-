@@ -1,7 +1,0 @@
-package com.velvetvictory.serviceImpl;
-
-import com.velvetvictory.service.CustomerService;
-
-public class CustomerServiceImpl implements CustomerService{
-
-}
