@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.velvetvictory.models.Address;
 
 @Repository
-public interface AddressRepository extends JpaRepository<Address, Long> {
-
+public interface AddressRepository extends JpaRepository<Address, Long> 
+{
 	List<Address> findByCustomerEmail(String email);
 }

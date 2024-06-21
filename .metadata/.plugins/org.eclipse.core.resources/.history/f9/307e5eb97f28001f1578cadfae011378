@@ -1,5 +1,0 @@
-package com.velvetvictory.repository;
-
-public interface FoodRepository {
-
-}
