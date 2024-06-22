@@ -21,10 +21,40 @@
     text-align: left;
 }
 
-.para2{
+.flex_container{
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.flex_container > div{
+   width: 50%;
+   text-align: left;
+}
+
+.para3 {
+    display: flex;
+    align-items: stretch;
+    margin: 50px;
+    
+}
+
+.forImage1{
+    height: 300px;
+    width: 90%;
+    border-radius: 15px;
+}
+
+.para4{
     text-align: left;
 }
 
-.para3{
-    text-align: right;
+.flex_container1{
+    display: flex;
+   
+}
+
+.flex_container1 > div{
+    
+   
 }

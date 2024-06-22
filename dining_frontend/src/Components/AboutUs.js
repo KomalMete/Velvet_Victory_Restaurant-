@@ -2,6 +2,11 @@ import React from "react";
 import "./AboutUs.css";
 import About_us1 from '../Images/About_us1.jpg';
 import About_us2 from '../Images/About_us2.jpg';
+import work1 from '../Images/work1.jpg';
+import work2 from '../Images/work2.jpg';
+import work3 from '../Images/work3.jpg';
+import work4 from '../Images/work4.png';
+import work5 from '../Images/work5.webp';
 
 const AboutUs = () => {
 
@@ -25,8 +30,8 @@ const AboutUs = () => {
 
             <br />
 
-            <div >
-                <div className="para2">
+            <div className="flex_container">
+                <div>
                     <h2>Who Are We?</h2>
                     <p>
                     Launched in 2010, Our technology platform connects customers, restaurant partners and delivery partners,
@@ -40,8 +45,23 @@ const AboutUs = () => {
                     </p>
                 </div>
                 <div className="para3">
-                    <img className = "forImage" src={About_us2}></img>
+                    <img className = "forImage1" src={About_us2}></img>
                 </div>
+            </div>
+
+            <div>
+                <div className="para4">
+                    <h2>Glimpses of life at Velvet Victory</h2>
+                </div>
+
+                <div className="flex_container1">
+                    <div>
+                        <img src={work1}></img>
+                        <img src={work2}></img>
+                    </div>
+                    
+                </div>
+                
             </div>
         </div>
     )
