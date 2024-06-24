@@ -55,13 +55,15 @@ const AboutUs = () => {
                 </div>
 
                 <div className="flex_container1">
-                    <div>
                         <img src={work1}></img>
                         <img src={work2}></img>
-                    </div>
-                    
+                        <img src={work5}></img>
                 </div>
                 
+                <div className="flex_container2">
+                        <img src={work3}></img>
+                        <img src={work4}></img>
+                </div>
             </div>
         </div>
     )
