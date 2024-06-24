@@ -14,8 +14,8 @@ const AboutUs = () => {
 
         <div className="container">
             <div className="imageContainer">
-                <img className = "forImage" src={About_us1}></img>
-                <h1 className="overlayText">Better Food For More People</h1>
+                <img className = "forImage2" src={About_us1}></img>
+                <h1 className="overlayText1">Better Food For More People</h1>
             </div>
 
             <br />
@@ -55,14 +55,14 @@ const AboutUs = () => {
                 </div>
 
                 <div className="flex_container1">
-                        <img src={work1}></img>
-                        <img src={work2}></img>
-                        <img src={work5}></img>
+                        <img className="officeImage" src={work1}></img>
+                        <img className="officeImage"  src={work2}></img>
+                        <img className="officeImage"  src={work5}></img>
                 </div>
                 
                 <div className="flex_container2">
-                        <img src={work3}></img>
-                        <img src={work4}></img>
+                        <img className="officeImage"  src={work3}></img>
+                        <img className="officeImage"  src={work4}></img>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import "./Footer.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import res_logo from '../Images/res_logo.jpg';
+import { Link } from "react-router-dom";
 import { 
     MDBFooter, 
     MDBContainer, 
@@ -26,20 +27,18 @@ const Footer =()=>{
                 <MDBIcon icon="gem" className="me-3"  />
                 Velvet Victory
               </h6>
-              {/* <p>
-               <img className="logo_class" src={res_logo}></img>
-              </p> */}
             </MDBCol>
 
             <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4' style={{marginTop : '55px'}}>
               <h6 className='text-uppercase fw-bold mb-4'>Get to know us</h6>
               <p>
-                <a href='#!' className='text-reset'>
+                <a href='aboutus' className='text-reset'>
                   About Us
                 </a>
+                
               </p>
               <p>
-                <a href='#!' className='text-reset'>
+                <a href='contactus' className='text-reset'>
                   Contact Us
                 </a>
               </p>
@@ -87,7 +86,7 @@ const Footer =()=>{
 
       <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
         © 2024 Copyright:
-        <a className='text-reset fw-bold' href='https://velvetvictory.com/'>
+        <a className='text-reset fw-bold' href='/'>
           velvetvictory.com
         </a>
       </div>

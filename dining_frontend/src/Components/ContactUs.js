@@ -7,7 +7,6 @@ const ContactUs = () =>{
 
     return(
         <div className="container">
-
             <div className="imageContainer" >
                 <img className = "forImage" src={cookies_1}></img>
                 <h1 className="overlayText">We would love to hear from you!</h1>
