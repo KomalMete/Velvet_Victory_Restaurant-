@@ -2,8 +2,6 @@ package com.velvetvictory.serviceImpl;
 
 import java.util.Set;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,19 +42,12 @@ public class RestaurantsServiceImpl implements RestaurantsService{
 	}
 
 	@Override
-	@Transactional
 	public Object deleteRestaurantById(Long restaurantId) {
 		
 		if(restaurantRepo.existsById(restaurantId))
 		{
 			Restaurants restaurant = restaurantRepo.findById(restaurantId).get();
 			Set<Food> food = restaurant.getFoods();
-			
-			for(Food food1 : food)
-			{
-				restaurant.removeFood(food1);
-				restaurantRepo.save(restaurant);
-			}
 					
 			restaurantRepo.deleteById(restaurantId);
 			return "Restaurant deleted successfully..";

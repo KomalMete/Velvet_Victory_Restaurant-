@@ -1,7 +1,0 @@
-package com.velvetvictory.serviceImpl;
-
-import com.velvetvictory.service.AdminService;
-
-public class AdminServiceImpl implements AdminService {
-
-}
