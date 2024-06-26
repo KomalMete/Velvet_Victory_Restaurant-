@@ -53,13 +53,13 @@ public class Food {
 	@ManyToMany(mappedBy = "foods")
 	private Set<Restaurants> restaurants = new HashSet<>();
 	
-	 public void addRestaurant(Restaurants restaurant) {
-	        this.restaurants.add(restaurant);
+	 public void addRestaurants(Restaurants restaurant) {
+	        restaurants.add(restaurant);
 	        restaurant.getFoods().add(this);
 	    }
 
 	    public void removeRestaurant(Restaurants restaurant) {
-	        this.restaurants.remove(restaurant);
+	        restaurants.remove(restaurant);
 	        restaurant.getFoods().remove(this);
 	    }
 }

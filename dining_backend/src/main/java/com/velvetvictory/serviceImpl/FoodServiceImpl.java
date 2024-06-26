@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,7 @@ public class FoodServiceImpl implements FoodService {
 	private RestaurantsRepository restaurantsRepo;
 
 	@Override
+	@Transactional
 	public Object saveOrUpdateFood(FoodRequest foodRequest, MultipartFile file) {
 		
 		String imagePath;
@@ -45,16 +48,17 @@ public class FoodServiceImpl implements FoodService {
 				food = new Food();
 				food.setId(foodRequest.getId());
 			}
+			
 			food.setName(foodRequest.getName());
 			food.setDiscription(foodRequest.getDiscription());
 			food.setPrice(foodRequest.getPrice());
 			food.setFoodCategory(foodRequest.getFoodCategory());
 			food.setImage(imagePath);
 		
-			//foodRepo.save(food);
+			food = foodRepo.save(food);
 			
 			//for restaurant
-		    Set<Restaurants> restaurants = new HashSet<>();
+		    Set<Restaurants> restaurants = new HashSet<Restaurants>();
 		    
 		    for(Restaurants res : foodRequest.getRestaurants())
 		    {
@@ -64,31 +68,39 @@ public class FoodServiceImpl implements FoodService {
 		    	}
 		    	else
 		    	{
-		    		res.addFood(food);
 		    		restaurantsRepo.save(res);
 		    	}
 		    	
-		    	 food.addRestaurant(res);
+		    	 food.addRestaurants(res);
 		    	 restaurants.add(res);
 		    	 
 		    }
 		    
 		    food.setRestaurants(restaurants);
 		    foodRepo.save(food);
+		    
+		    
 		    return "Food details saved successfully..";
 		    
 		    //this type of entry is expected in postman
-//		    {
-//		        "id" : 0,
-//		        "name" : "Margherita Semizza (Half Pizza)",
-//		        "discription" : "Mozzarella Cheese, Fresh Parsley. A classic treat for every cheese lover",
-//		        "price" : 175,
-//		        "foodCategory" : {
-//		            "id" : 5
-//		        },
-//		    "restaurants" : [{ "id" : 3
-//		    }]
-//		    }
+//		   {
+//		    "id": 0,
+//		    "name": "Mexican Fiesta Thin n Crispy",
+//		    "discription": "New Thin n Crispy crust topped with spiced paneer, spicy red paprika, delicious tandoori sauce and cheese",
+//		    "price": 749,
+//		    "foodCategory": {
+//		        "id": 5
+//		    },
+//		    "restaurants": [
+//		        {
+//		            "id": 4
+//		        }
+//	        	{
+//            		"id": 5
+//        		}
+//		    ]
+//		}
+
 		} 
 		
 		catch (IOException e) {
