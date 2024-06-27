@@ -165,6 +165,7 @@ public class FoodServiceImpl implements FoodService {
 		}
 	}
 
+	
 
 	@Override
 	@Transactional
@@ -187,6 +188,33 @@ public class FoodServiceImpl implements FoodService {
 			food.add(foodDto);
 		}
 		return food;
+	}
+
+	@Override
+	@Transactional
+	public Object deleteMultipleFoodByIdFromRestaurant(Set<Food> foodIds, Long restaurantId)
+	{
+		Restaurants restaurant = restaurantsRepo.findById(restaurantId).orElseThrow(() -> new IllegalArgumentException("Restaurant doesnt exist"));
+		
+		Set<Food> setFoods;
+		try
+		{
+			for(Food foods : foodIds)
+			{
+				Food food = foodRepo.findById(foods.getId()).get();
+				restaurant.removeFood(food);
+				restaurantsRepo.save(restaurant);
+			}
+			
+			return "Food items deleted from restaurant";
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "Food not deleted from restaurant";
+		}
+		
+		
 	}
 
 }

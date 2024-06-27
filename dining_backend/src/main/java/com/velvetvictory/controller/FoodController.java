@@ -1,6 +1,9 @@
 package com.velvetvictory.controller;
 
 
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.velvetvictory.dto.request.FoodRequest;
 import com.velvetvictory.dto.response.CustomEntityResponse;
 import com.velvetvictory.dto.response.EntityResponse;
+import com.velvetvictory.models.Food;
 import com.velvetvictory.service.FoodService;
 
 @RestController
@@ -84,6 +88,21 @@ public class FoodController {
 		try
 		{
 			return new ResponseEntity( new EntityResponse(foodService.deleteFoodByIdFromRestaurant(foodId, restaurantId), 0), HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+
+	@DeleteMapping("/deleteMultipleFoodByIdFromRestaurant")
+	public ResponseEntity<?> deleteMultipleFoodByIdFromRestaurant(@RequestParam (name = "foodId") Set<Food> foodIds,
+														@RequestParam (name = "restaurantId") Long restaurantId)
+	{
+		try
+		{
+			return new ResponseEntity( new EntityResponse(foodService.deleteMultipleFoodByIdFromRestaurant(foodIds, restaurantId), 0), HttpStatus.OK);
 		}
 		catch(Exception e)
 		{
