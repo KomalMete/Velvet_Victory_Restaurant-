@@ -2,6 +2,7 @@ package com.velvetvictory.serviceImpl;
 
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.velvetvictory.dto.request.FoodDTO;
 import com.velvetvictory.dto.request.FoodRequest;
 import com.velvetvictory.models.Food;
 import com.velvetvictory.models.Restaurants;
@@ -140,6 +142,39 @@ public class FoodServiceImpl implements FoodService {
 		{
 			return "Food doesnt exist...";
 		}
+	}
+
+
+	@Override
+	public Object deleteFoodByIdFromRestaurant(Long foodId, Long restaurantId)
+	{
+		Restaurants restaurant = restaurantsRepo.findById(restaurantId).orElseThrow(() -> new IllegalArgumentException("Restaurant doesnt exist"));
+		Food food = foodRepo.findById(foodId).orElseThrow(() -> new IllegalArgumentException("Food doesnt exist"));
+		return null;
+	}
+
+
+	@Override
+	@Transactional
+	public Object getAllFoodOfRestaurant(Long restaurantId)
+	{
+		
+		Restaurants restaurant = restaurantsRepo.findById(restaurantId).orElseThrow(() -> new IllegalArgumentException("Restaurant doesnt exist"));
+		Set<FoodDTO> food = new HashSet<FoodDTO>();
+		//using dto as in its a safest way to load all food items
+		for(Food foods : restaurant.getFoods())
+		{
+			FoodDTO foodDto = new FoodDTO();
+			
+			foodDto.setId(foods.getId());
+			foodDto.setName(foods.getName());
+			foodDto.setDiscription(foods.getDiscription());
+			foodDto.setImage(foods.getImage());
+			foodDto.setPrice(foods.getPrice());
+			
+			food.add(foodDto);
+		}
+		return food;
 	}
 
 }

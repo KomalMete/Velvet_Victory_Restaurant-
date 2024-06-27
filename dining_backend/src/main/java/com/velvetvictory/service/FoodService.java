@@ -13,4 +13,8 @@ public interface FoodService {
 
 	Object getFoodById(Long id);
 
+	Object deleteFoodByIdFromRestaurant(Long foodId, Long restaurantId);
+
+	Object getAllFoodOfRestaurant(Long restaurantId);
+
 }

@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -69,6 +70,33 @@ public class FoodController {
 		try
 		{
 			return new ResponseEntity( new EntityResponse(foodService.getFoodById(id), 0), HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@DeleteMapping("/deleteFoodByIdFromRestaurant")
+	public ResponseEntity<?> deleteFoodByIdFromRestaurant(@RequestParam (name = "foodId") Long foodId,
+														@RequestParam (name = "restaurantId") Long restaurantId)
+	{
+		try
+		{
+			return new ResponseEntity( new EntityResponse(foodService.deleteFoodByIdFromRestaurant(foodId, restaurantId), 0), HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/getAllFoodOfRestaurant")
+	public ResponseEntity<?> getAllFoodOfRestaurant(@RequestParam (name ="restaurantId") Long restaurantId)
+	{
+		try
+		{
+			return new ResponseEntity( new EntityResponse(foodService.getAllFoodOfRestaurant(restaurantId), 0), HttpStatus.OK);
 		}
 		catch(Exception e)
 		{

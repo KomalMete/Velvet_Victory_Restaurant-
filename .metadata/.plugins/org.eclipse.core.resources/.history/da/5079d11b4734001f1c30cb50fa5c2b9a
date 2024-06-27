@@ -1,0 +1,24 @@
+package com.velvetvictory.dto.request;
+
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+
+import com.velvetvictory.models.FoodCategory;
+
+public class FoodDTO {
+
+	private Long id;
+	
+	private String name;
+	
+	private String discription;
+	
+	private double price;
+	
+	@Column(name = "image")
+	@NotEmpty(message = "Image cant be null")
+	private String image;
+	
+}

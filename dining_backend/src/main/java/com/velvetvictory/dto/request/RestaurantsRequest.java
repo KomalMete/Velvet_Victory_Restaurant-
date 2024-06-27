@@ -10,9 +10,12 @@ import lombok.ToString;
 @Getter
 @NoArgsConstructor
 @ToString
+@AllArgsConstructor
 public class RestaurantsRequest {
 
 	private Long id;
 	
 	private String restaurantName;
+	
+	
 }
