@@ -146,11 +146,23 @@ public class FoodServiceImpl implements FoodService {
 
 
 	@Override
+	@Transactional
 	public Object deleteFoodByIdFromRestaurant(Long foodId, Long restaurantId)
 	{
 		Restaurants restaurant = restaurantsRepo.findById(restaurantId).orElseThrow(() -> new IllegalArgumentException("Restaurant doesnt exist"));
-		Food food = foodRepo.findById(foodId).orElseThrow(() -> new IllegalArgumentException("Food doesnt exist"));
-		return null;
+		
+		try {
+		Food food = foodRepo.findById(foodId).get();
+		restaurant.removeFood(food);
+		restaurantsRepo.save(restaurant);
+		//foodRepo.deleteById(food.getId());
+		
+		return "Food deleted from restaurant";
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return "Food not deleted from restaurant";
+		}
 	}
 
 

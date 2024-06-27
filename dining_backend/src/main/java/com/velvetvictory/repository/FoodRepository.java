@@ -18,4 +18,6 @@ public interface FoodRepository extends JpaRepository<Food, Long>
 	Page findByName(String name, Pageable pageable);
 	
 	List<Food> findByRestaurants(Long restaurantId);
+	
+	
 }
