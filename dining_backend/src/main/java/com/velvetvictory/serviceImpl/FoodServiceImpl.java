@@ -15,7 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.velvetvictory.dto.request.FoodDTO;
 import com.velvetvictory.dto.request.FoodRequest;
 import com.velvetvictory.models.Food;
+import com.velvetvictory.models.FoodCategory;
 import com.velvetvictory.models.Restaurants;
+import com.velvetvictory.repository.FoodCategoryRepository;
 import com.velvetvictory.repository.FoodRepository;
 import com.velvetvictory.repository.RestaurantsRepository;
 import com.velvetvictory.service.FoodService;
@@ -31,6 +33,9 @@ public class FoodServiceImpl implements FoodService {
 	
 	@Autowired
 	private RestaurantsRepository restaurantsRepo;
+	
+	@Autowired
+	private FoodCategoryRepository foodCategoryRepo;
 
 	@Override
 	@Transactional
@@ -215,6 +220,39 @@ public class FoodServiceImpl implements FoodService {
 		}
 		
 		
+	}
+
+	@Override
+	@Transactional
+	public Object getAllFoodFromCategory(String foodCategoryName)
+	{
+		try 
+		{
+			FoodCategory category = foodCategoryRepo.findByCategoryName(foodCategoryName);
+			
+			Set<Food> food = foodRepo.findByFoodCategoryCategoryName(foodCategoryName);
+			
+			Set<FoodDTO> foods = new HashSet<>();
+			for(Food foodItems : food)
+			{
+				FoodDTO foodDto = new FoodDTO();
+				
+				foodDto.setId(foodItems.getId());
+				foodDto.setName(foodItems.getName());
+				foodDto.setDiscription(foodItems.getDiscription());
+				foodDto.setPrice(foodItems.getPrice());
+				foodDto.setImage(foodItems.getImage());
+				
+				foods.add(foodDto);
+			}
+			return foods;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "Food category not found";
+		}
+	
 	}
 
 }

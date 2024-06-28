@@ -1,5 +1,7 @@
 package com.velvetvictory.serviceImpl;
 
+import java.util.function.Supplier;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
@@ -57,6 +59,7 @@ public class CustomerServiceImpl implements CustomerService{
               Context context = new Context();
               context.setVariable("firstName", customer.getFirstName());
               context.setVariable("lastName", customer.getLastName());
+              context.setVariable("otp", generateOTP());
               this.sendEmailWithTemplate("komaldmete16@gmail.com", "Sign Up", context);
               customerRepository.save(customer);
   				return "Customer Registration Successfull..";
@@ -89,6 +92,20 @@ public class CustomerServiceImpl implements CustomerService{
 
     }
 
+    public String generateOTP()
+    {
+    	//java8 feature
+    	Supplier<String> s = () -> {
+    		String otp = "";
+    		for(int i=0; i<=5; i++)
+    		{
+    			otp = otp + (int)(Math.random()*10);
+    		}
+    		return otp;
+    	};
+    	String generatedOTP = s.get();
+    	return generatedOTP;
+    }
 
 	@Override
 	public Object deleteCustomerById(Long id) {
@@ -102,7 +119,6 @@ public class CustomerServiceImpl implements CustomerService{
 		{
 			return "Customer doesnt exist..";
 		}
-	
 	}
 
 

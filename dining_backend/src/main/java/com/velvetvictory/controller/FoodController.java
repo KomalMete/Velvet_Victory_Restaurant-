@@ -122,4 +122,18 @@ public class FoodController {
 			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@GetMapping("/getAllFoodFromCategory")
+	public ResponseEntity<?> getAllFoodFromCategory(@RequestParam (name ="foodCategoryName") String foodCategoryName)
+	{
+		try
+		{
+			return new ResponseEntity( new EntityResponse(foodService.getAllFoodFromCategory(foodCategoryName), 0), HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 }

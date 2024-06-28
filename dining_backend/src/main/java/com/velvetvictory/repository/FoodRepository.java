@@ -1,6 +1,7 @@
 package com.velvetvictory.repository;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,5 +20,5 @@ public interface FoodRepository extends JpaRepository<Food, Long>
 	
 	List<Food> findByRestaurants(Long restaurantId);
 	
-	
+	Set<Food> findByFoodCategoryCategoryName(String categoryName);
 }

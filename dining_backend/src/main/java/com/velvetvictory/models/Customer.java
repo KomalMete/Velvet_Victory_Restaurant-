@@ -56,5 +56,4 @@ public class Customer {
 	@NotEmpty
 	private String role;
 
-
 }

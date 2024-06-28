@@ -22,4 +22,6 @@ public interface FoodService {
 
 	Object deleteMultipleFoodByIdFromRestaurant(Set<Food> foodIds, Long restaurantId);
 
+	Object getAllFoodFromCategory(String foodCategoryName);
+
 }
