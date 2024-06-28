@@ -232,7 +232,6 @@ public class FoodServiceImpl implements FoodService {
 			
 			Set<Food> food = foodRepo.findByFoodCategoryCategoryName(foodCategoryName);
 			
-			//safest way to do operation so it wont give error of lazy initialization
 			Set<FoodDTO> foods = new HashSet<>();
 			for(Food foodItems : food)
 			{
