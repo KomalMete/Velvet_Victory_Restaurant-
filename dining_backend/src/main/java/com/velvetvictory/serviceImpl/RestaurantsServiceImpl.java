@@ -1,5 +1,6 @@
 package com.velvetvictory.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -89,23 +90,33 @@ public class RestaurantsServiceImpl implements RestaurantsService{
 		Set<RestaurantDTO> restaurants = new HashSet<>();
 		
 		//Retrieving set of food from that category
-		Set<Food> food = foodRepo.findByFoodCategoryCategoryName(foodCategory.getCategoryName());
+		//Set<Food> food = foodRepo.findByFoodCategoryCategoryName(foodCategory.getCategoryName());
+		List<Long> foodIds = foodRepo.getFoodIdsByCategory(foodCategoryId);
 		
-		//retrieving set of food ids from category id
-		//Set<Long> foodId = foodRepo.findByFoodCategoryId(foodCategory.getId());
+		//System.out.println(foodIds);
+		List<Long> restaurantIds = new ArrayList<Long>();
 		
-		for(Food foods : food)
+		List<Restaurants> restaurantList = new ArrayList<>();
+		if(!foodIds.isEmpty())
 		{
-		    //Restaurants restaurants1 = new Restaurants();
+			restaurantIds = restaurantRepo.getRestaurantIdsByFoodIds(foodIds);
+		}
+		if(!restaurantIds.isEmpty())
+		{
+			restaurantList = restaurantRepo.getALLRestaurantByIds(restaurantIds);
+		
+		}
+		for(Restaurants restaurants2 : restaurantList)
+		{
 			RestaurantDTO restaurantDTO = new RestaurantDTO();
 			
-			Restaurants restaurants1 = restaurantRepo.findByFoodsId(foods.getId());
-			
-			restaurantDTO.setId(restaurants1.getId());
-			restaurantDTO.setRestaurantName(restaurants1.getRestaurantName());
+			restaurantDTO.setId(restaurants2.getId());
+			restaurantDTO.setRestaurantName(restaurants2.getRestaurantName());
 			
 			restaurants.add(restaurantDTO);
 		}
+		
+		
 		
 		return restaurants;
 	}

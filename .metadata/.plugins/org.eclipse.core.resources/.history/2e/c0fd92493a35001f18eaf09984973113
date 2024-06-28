@@ -1,0 +1,19 @@
+package com.velvetvictory.repository;
+
+import java.util.Set;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.velvetvictory.models.Food;
+import com.velvetvictory.models.Restaurants;
+
+public interface RestaurantsRepository extends JpaRepository<Restaurants, Long> {
+
+	//Food findByFoodsId(Long foodId);
+	
+	//sql native query
+	
+	@Query(value = "Select * FROM restaurants r WHERE r.foodId = :foodId", nativeQuery = true)
+	Restaurants findByFoodsId(Long foodId);
+}

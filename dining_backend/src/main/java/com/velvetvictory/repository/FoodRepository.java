@@ -24,6 +24,10 @@ public interface FoodRepository extends JpaRepository<Food, Long>
 	Set<Food> findByFoodCategoryCategoryName(String categoryName);
 	
 	Set<Long> findByFoodCategoryId(Long categoryId);
+
+	//because we r using nativeQuery = true give parameters as they are present in database tables
+	@Query(value = " select DISTINCT(id) from food where food_category_id =:foodCategoryId",nativeQuery = true)
+	List<Long> getFoodIdsByCategory(Long foodCategoryId);
 	
 	//Restaurants findById(Long foodId);
 }
