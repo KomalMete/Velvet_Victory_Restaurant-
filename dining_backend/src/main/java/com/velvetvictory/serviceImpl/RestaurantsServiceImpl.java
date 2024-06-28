@@ -116,9 +116,53 @@ public class RestaurantsServiceImpl implements RestaurantsService{
 			restaurants.add(restaurantDTO);
 		}
 		
-		
-		
 		return restaurants;
+	}
+
+	@Override
+	public Object getAllRestaurantsFromFoodName(String foodName)
+	{
+		//retrieve food
+		List<Long> foodIds= foodRepo.findByName(foodName);
+		
+		List<Long> restaurantIds = new ArrayList<Long>();
+		
+		//list to return to dto
+		List<Restaurants> restaurantList = new ArrayList<>();
+		
+		//to return set of restaurants
+		Set<RestaurantDTO> restaurants = new HashSet<>();
+		
+		if(!foodIds.isEmpty())
+		{
+			restaurantIds = restaurantRepo.getRestaurantIdsByFoodIds(foodIds);
+			
+			if(!restaurantIds.isEmpty())
+			{
+				restaurantList = restaurantRepo.getALLRestaurantByIds(restaurantIds);
+				
+				for(Restaurants restaurants2 : restaurantList)
+				{
+					RestaurantDTO restaurantDTO = new RestaurantDTO();
+					
+					restaurantDTO.setId(restaurants2.getId());
+					restaurantDTO.setRestaurantName(restaurants2.getRestaurantName());
+					
+					restaurants.add(restaurantDTO);
+				}
+				
+				return restaurants;
+			}
+			else
+			{
+				return "No restaurant found with that Food Name";
+			}
+		}
+		else
+		{
+			return "No food found with that name";
+		}
+		
 	}
 
 	

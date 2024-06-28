@@ -12,6 +12,8 @@ public interface RestaurantsService {
 
 	Object getAllRestaurantsFromFoodCategory(Long foodCategoryId);
 
+	Object getAllRestaurantsFromFoodName(String foodName);
+
 	
 
 }
