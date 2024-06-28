@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.velvetvictory.models.Food;
+import com.velvetvictory.models.Restaurants;
 
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Long>
@@ -21,4 +22,8 @@ public interface FoodRepository extends JpaRepository<Food, Long>
 	List<Food> findByRestaurants(Long restaurantId);
 	
 	Set<Food> findByFoodCategoryCategoryName(String categoryName);
+	
+	Set<Long> findByFoodCategoryId(Long categoryId);
+	
+	//Restaurants findById(Long foodId);
 }

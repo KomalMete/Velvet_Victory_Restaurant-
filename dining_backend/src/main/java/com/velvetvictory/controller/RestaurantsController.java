@@ -65,4 +65,16 @@ public class RestaurantsController {
         }
     }
 	
+	@GetMapping("/getAllRestaurantsFromFoodCategory")
+	public ResponseEntity<?> getAllRestaurantsFromFoodCategory(@RequestParam (name = "foodCategoryId")Long foodCategoryId)
+	{
+		try
+		{
+			return new ResponseEntity(new EntityResponse(restaurantsService.getAllRestaurantsFromFoodCategory(foodCategoryId), 0), HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.OK);
+		}
+	}
 }

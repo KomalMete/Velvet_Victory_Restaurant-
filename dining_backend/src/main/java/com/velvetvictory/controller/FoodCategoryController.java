@@ -65,4 +65,6 @@ public class FoodCategoryController {
             return new ResponseEntity<>(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.OK);
         }
     }
+	
+	
 }

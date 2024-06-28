@@ -10,4 +10,8 @@ public interface RestaurantsService {
 
 	Object deleteRestaurantById(Long restaurantId);
 
+	Object getAllRestaurantsFromFoodCategory(Long foodCategoryId);
+
+	
+
 }
