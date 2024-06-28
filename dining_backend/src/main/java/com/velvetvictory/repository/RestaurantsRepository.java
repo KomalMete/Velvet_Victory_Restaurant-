@@ -27,4 +27,5 @@ public interface RestaurantsRepository extends JpaRepository<Restaurants, Long> 
 
 	@Query(value =" select * From restaurants where id IN(:restaurantIds)", nativeQuery = true)
 	List<Restaurants> getALLRestaurantByIds(List<Long> restaurantIds);
+	
 }
