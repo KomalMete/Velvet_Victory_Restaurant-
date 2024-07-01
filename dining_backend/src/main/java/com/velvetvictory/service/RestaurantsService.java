@@ -14,6 +14,8 @@ public interface RestaurantsService {
 
 	Object getAllRestaurantsFromFoodName(String foodName);
 
+	Object getAllRestaurantsFromFoodCategoryName(String CategoryName);
+
 	
 
 }

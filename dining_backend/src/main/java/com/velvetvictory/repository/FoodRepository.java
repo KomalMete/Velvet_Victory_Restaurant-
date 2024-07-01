@@ -31,4 +31,14 @@ public interface FoodRepository extends JpaRepository<Food, Long>
 	
 	@Query(value = " select DISTINCT(id) from food where food_name like  %:foodName%",nativeQuery = true)
 	List<Long> findByName(String foodName);
+	
+	@Query(value = "select DISTINCT(id) from food where food_category_id.category_name like %:categoryName%", nativeQuery = true)
+	List<Long> getFoodIdsByCategoryName(String categoryName);
+	
+	//SQL query
+	@Query(value = "select DISTINCT(id) from food_categories where category_name like %:categoryName%", nativeQuery = true)
+	List<Long> getCategoryIdsByCategoryName(String categoryName);
+	
+	@Query(value = "select DISTINCT(id) from food where food_category_id IN(:categoryIds)", nativeQuery = true)
+	List<Long> getFoodIdsByCategoryIds(List<Long> categoryIds);
 }

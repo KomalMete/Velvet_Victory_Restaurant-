@@ -90,4 +90,17 @@ public class RestaurantsController {
 			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.OK);
 		}
 	}
+	
+	@GetMapping("/getAllRestaurantsFromFoodCategoryName")
+	public ResponseEntity<?> getAllRestaurantsFromFoodCategoryName(@RequestParam (name = "CategoryName")String CategoryName)
+	{
+		try
+		{
+			return new ResponseEntity(new EntityResponse(restaurantsService.getAllRestaurantsFromFoodCategoryName(CategoryName), 0), HttpStatus.OK);
+		}
+		catch(Exception e)
+		{
+			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.OK);
+		}
+	}
 }
