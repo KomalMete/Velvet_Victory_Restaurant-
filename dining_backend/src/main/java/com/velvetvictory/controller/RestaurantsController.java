@@ -36,7 +36,6 @@ public class RestaurantsController {
 	        }
 	}
 	
-	
 	@GetMapping("/getAllRestaurants")
 	public ResponseEntity<?> getAllRestaurants()
 	{

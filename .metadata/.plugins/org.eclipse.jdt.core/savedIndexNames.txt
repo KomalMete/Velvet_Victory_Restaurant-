@@ -53,7 +53,6 @@ INDEX VERSION 1.131+D:\Hotel_Management\Velvet_Victory\.metadata\.plugins\org.ec
 1019269603.index
 1951820964.index
 669072534.index
-594294307.index
 3426694032.index
 2527809786.index
 1169915486.index
