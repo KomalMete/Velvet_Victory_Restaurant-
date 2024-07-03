@@ -76,4 +76,25 @@ public class CartServiceImpl implements CartService{
 		
 	}
 
+	@Override
+	public Object increaseFoodQuantity(Long cartId, String customerEmail)
+	{
+		
+		Cart cart = cartRepo.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found for "+customerEmail));
+		
+		cart.setFoodQuantity(cart.getFoodQuantity()+1);
+		cartRepo.save(cart);
+		return " Food quantity increased successfully..";
+	}
+
+	@Override
+	public Object decreaseFoodQuantity(Long cartId, String customerEmail) 
+	{
+		Cart cart = cartRepo.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found for "+customerEmail));
+		
+		cart.setFoodQuantity(cart.getFoodQuantity()- 1);
+		cartRepo.save(cart);
+		return " Food quantity decreased successfully..";
+	}
+
 }

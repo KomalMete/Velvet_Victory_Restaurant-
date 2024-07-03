@@ -10,4 +10,8 @@ public interface CartService {
 
 	Object getAllFoodItemsFromCart(String customerEmail);
 
+	Object increaseFoodQuantity(Long cartId, String customerEmail);
+
+	Object decreaseFoodQuantity(Long cartId, String customerEmail);
+
 }
