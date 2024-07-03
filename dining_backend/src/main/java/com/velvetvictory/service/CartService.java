@@ -8,4 +8,6 @@ public interface CartService {
 
 	Object removeFoodFromCart(Long cartId);
 
+	Object getAllFoodItemsFromCart(String customerEmail);
+
 }

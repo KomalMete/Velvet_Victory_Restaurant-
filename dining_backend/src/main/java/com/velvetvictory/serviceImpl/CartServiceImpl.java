@@ -1,5 +1,10 @@
 package com.velvetvictory.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +56,24 @@ public class CartServiceImpl implements CartService{
 		{
 			return "Cart Id not found..";
 		}
+	}
+
+	@Override
+	public Object getAllFoodItemsFromCart(String customerEmail)
+	{
+		Customer customer = customerRepo.findByEmail(customerEmail);
+		
+		List<Cart> cart = cartRepo.getCartByCustomerID(customer.getId());
+		
+		if(!cart.isEmpty())
+		{
+			return cart;
+		}
+		else
+		{
+			return " No Food item present in cart";
+		}
+		
 	}
 
 }
