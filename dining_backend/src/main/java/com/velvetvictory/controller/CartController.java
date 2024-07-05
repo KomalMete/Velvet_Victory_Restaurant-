@@ -80,12 +80,11 @@ public class CartController {
 	}
 	
 	@PutMapping("/increaseFoodQuantity")
-	public ResponseEntity<?> increaseFoodQuantity(@RequestParam (name = "cartId") Long cartId,
-												  @RequestParam (name = "customerEmail") String customerEmail)
+	public ResponseEntity<?> increaseFoodQuantity(@RequestParam (name = "cartId") Long cartId)
 	{
 		 try
 	        {
-	            return new ResponseEntity(new EntityResponse(cartService.increaseFoodQuantity(cartId, customerEmail), 0), HttpStatus.OK);
+	            return new ResponseEntity(new EntityResponse(cartService.increaseFoodQuantity(cartId), 0), HttpStatus.OK);
 	        }
 	        catch (Exception e)
 	        {
@@ -94,12 +93,11 @@ public class CartController {
 	}
 	
 	@PutMapping("/decreaseFoodQuantity")
-	public ResponseEntity<?> decreaseFoodQuantity(@RequestParam (name = "cartId") Long cartId,
-												  @RequestParam (name = "customerEmail") String customerEmail)
+	public ResponseEntity<?> decreaseFoodQuantity(@RequestParam (name = "cartId") Long cartId)
 	{
 		 try
 	        {
-	            return new ResponseEntity(new EntityResponse(cartService.decreaseFoodQuantity(cartId, customerEmail), 0), HttpStatus.OK);
+	            return new ResponseEntity(new EntityResponse(cartService.decreaseFoodQuantity(cartId), 0), HttpStatus.OK);
 	        }
 	        catch (Exception e)
 	        {

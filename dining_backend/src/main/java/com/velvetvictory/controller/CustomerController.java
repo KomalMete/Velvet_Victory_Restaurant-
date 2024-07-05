@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,6 +60,19 @@ public class CustomerController {
 		 try
 	        {
 	            return new ResponseEntity(new EntityResponse(customerService.customerLogin(dto), 0), HttpStatus.OK);
+	        }
+	        catch (Exception e)
+	        {
+	            return new ResponseEntity<>(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.OK);
+	        }
+	}
+	
+	@PutMapping("/forgotPassword")
+	public ResponseEntity<?>forgotPassword(@RequestBody LoginDTO dto)
+	{
+		 try
+	        {
+	            return new ResponseEntity(new EntityResponse(customerService.forgotPassword(dto), 0), HttpStatus.OK);
 	        }
 	        catch (Exception e)
 	        {

@@ -1,7 +1,0 @@
-package com.velvetvictory.serviceImpl;
-
-import com.velvetvictory.service.CartService;
-
-public class CartServiceImpl implements CartService{
-
-}

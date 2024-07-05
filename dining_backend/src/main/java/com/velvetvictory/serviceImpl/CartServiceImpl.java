@@ -77,10 +77,10 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public Object increaseFoodQuantity(Long cartId, String customerEmail)
+	public Object increaseFoodQuantity(Long cartId)
 	{
 		
-		Cart cart = cartRepo.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found for "+customerEmail));
+		Cart cart = cartRepo.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
 		
 		cart.setFoodQuantity(cart.getFoodQuantity()+1);
 		cartRepo.save(cart);
@@ -88,9 +88,9 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public Object decreaseFoodQuantity(Long cartId, String customerEmail) 
+	public Object decreaseFoodQuantity(Long cartId) 
 	{
-		Cart cart = cartRepo.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found for "+customerEmail));
+		Cart cart = cartRepo.findById(cartId).orElseThrow(() -> new IllegalArgumentException("Cart not found"));
 		
 		cart.setFoodQuantity(cart.getFoodQuantity()- 1);
 		cartRepo.save(cart);
