@@ -58,7 +58,7 @@ public class Orders {
 	private List<Food> foods = new ArrayList<>();
 	
 	@OneToOne
-	@Column(name="payment_id")
+	@JoinColumn(name = "payment_id")
 	private Payment paymentId;
 	
 	@Column(name="status")

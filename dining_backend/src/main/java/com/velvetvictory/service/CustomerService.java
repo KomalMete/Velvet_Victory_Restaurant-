@@ -11,4 +11,6 @@ public interface CustomerService {
 
 	Object customerLogin(LoginDTO dto);
 
+	Object forgotPassword(LoginDTO dto);
+
 }

@@ -149,4 +149,31 @@ public class CustomerServiceImpl implements CustomerService{
 			return "DTO cant be null...";
 		}
 	}
+
+
+	@Override
+	public Object forgotPassword(LoginDTO dto) {
+		
+		if(dto != null)
+		{
+			Customer customer = customerRepository.findByEmail(dto.getEmail());
+			
+			String oldPassword = customer.getPassword();
+			
+			if(dto.getPassword() == oldPassword)
+			{
+				return "New-Password can not be same as Old-Password";
+			}
+			else
+			{
+				customer.setPassword(dto.getPassword());
+				customerRepository.save(customer);
+				return "New-Password saved successfully..";
+			}
+		}
+		else
+		{
+			return "Please provide Email and Password";
+		}
+	}
 }

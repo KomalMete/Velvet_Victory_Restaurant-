@@ -1,0 +1,14 @@
+package com.velvetvictory.service;
+
+import com.velvetvictory.dto.request.CustomerRequest;
+import com.velvetvictory.dto.request.LoginDTO;
+
+public interface CustomerService {
+
+	Object addCustomer(CustomerRequest customerRequest);
+
+	Object deleteCustomerById(Long id);
+
+	Object customerLogin(LoginDTO dto);
+
+}
