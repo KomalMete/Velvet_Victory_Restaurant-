@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.velvetvictory.dto.request.ChangePasswordDTO;
 import com.velvetvictory.dto.request.CustomerRequest;
 import com.velvetvictory.dto.request.FoodCategoryRequest;
 import com.velvetvictory.dto.request.LoginDTO;
@@ -73,6 +74,19 @@ public class CustomerController {
 		 try
 	        {
 	            return new ResponseEntity(new EntityResponse(customerService.forgotPassword(dto), 0), HttpStatus.OK);
+	        }
+	        catch (Exception e)
+	        {
+	            return new ResponseEntity<>(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.OK);
+	        }
+	}
+	
+	@PutMapping("/changePassword")
+	public ResponseEntity<?>changePassword(@RequestBody ChangePasswordDTO changePasswordDTO)
+	{
+		 try
+	        {
+	            return new ResponseEntity(new EntityResponse(customerService.changePassword(changePasswordDTO), 0), HttpStatus.OK);
 	        }
 	        catch (Exception e)
 	        {

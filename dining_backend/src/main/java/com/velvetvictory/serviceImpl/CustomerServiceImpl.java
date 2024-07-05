@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import com.velvetvictory.dto.request.ChangePasswordDTO;
 import com.velvetvictory.dto.request.CustomerRequest;
 import com.velvetvictory.dto.request.LoginDTO;
 import com.velvetvictory.models.Customer;
@@ -160,9 +161,14 @@ public class CustomerServiceImpl implements CustomerService{
 			
 			String oldPassword = customer.getPassword();
 			
-			if(dto.getPassword() == oldPassword)
+			//System.out.println(oldPassword);
+			//System.out.println(dto.getPassword());
+			
+			if(dto.getPassword().equals(oldPassword))
 			{
+				
 				return "New-Password can not be same as Old-Password";
+
 			}
 			else
 			{
@@ -174,6 +180,35 @@ public class CustomerServiceImpl implements CustomerService{
 		else
 		{
 			return "Please provide Email and Password";
+		}
+	}
+
+
+	@Override
+	public Object changePassword(ChangePasswordDTO changePasswordDTO) {
+		
+		Customer customer = customerRepository.findByEmail(changePasswordDTO.getEmail());
+		
+		String oldPassword = changePasswordDTO.getOldPassword();
+		
+		String newPassword = changePasswordDTO.getNewPassword();
+		
+		if(customer.getPassword().equals(oldPassword))
+		{
+			if(newPassword != null)
+			{
+				customer.setPassword(newPassword);
+				customerRepository.save(customer);
+				return "Password changed successfully..";
+			}
+			else
+			{
+				return "New password can't be null";
+			}
+		}
+		else
+		{
+			return "Provided Old-Password is not correct..";
 		}
 	}
 }
