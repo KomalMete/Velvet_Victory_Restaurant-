@@ -1,0 +1,7 @@
+package com.velvetvictory.serviceImpl;
+
+import com.velvetvictory.service.PaymentService;
+
+public class PaymentServiceImpl implements PaymentService {
+
+}

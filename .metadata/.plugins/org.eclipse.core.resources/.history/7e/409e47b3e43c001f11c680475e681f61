@@ -1,0 +1,30 @@
+package com.velvetvictory.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.velvetvictory.dto.request.OrderDTO;
+import com.velvetvictory.models.Orders;
+import com.velvetvictory.repository.OrderRepository;
+import com.velvetvictory.service.OrderService;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+	
+	@Autowired
+	private OrderRepository orderRepository;
+
+	public Object placeOrder(OrderDTO orderDTO)
+	{
+		
+		Orders order = new Orders();
+		
+		order.setOrderId(orderDTO.getOrderId());
+		order.setTotalPrice(orderDTO.getTotalPrice());
+		order.setAddress(orderDTO.getAddress());
+		order.setCustomer(orderDTO.getCustomer());
+		order.setRestaurant(orderDTO.getRestaurant());
+		return "Order placed successfully..";
+	}
+
+}
