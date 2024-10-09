@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,12 +37,16 @@ public class Restaurants {
 	@Column(name = "restaurant_name")
 	@NotEmpty(message = "Restaurant Name cannot be empty")
 	private String restaurantName;
+
+	@Column(name = "restaurant_image")
+	private String restaurantImage;
 	
 	@ManyToMany
 	@JoinTable(
 			name = "restaurants_food",
 			joinColumns = @JoinColumn(name = "restaurant_id"),
 			inverseJoinColumns = @JoinColumn(name = "food_id"))
+	@JsonIgnore
 	private Set<Food> foods =  new HashSet<>();
 	
 	public void addFood(Food food) {

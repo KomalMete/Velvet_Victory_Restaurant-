@@ -189,6 +189,7 @@ public class FoodServiceImpl implements FoodService {
 			foodDto.setDiscription(foods.getDiscription());
 			foodDto.setImage(foods.getImage());
 			foodDto.setPrice(foods.getPrice());
+			foodDto.setRestaurantName(restaurant.getRestaurantName());
 			
 			food.add(foodDto);
 		}

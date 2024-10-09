@@ -1,7 +1,0 @@
-package com.velvetvictory.serviceImpl;
-
-import com.velvetvictory.service.OrderService;
-
-public class OrderServiceImpl implements OrderService {
-
-}

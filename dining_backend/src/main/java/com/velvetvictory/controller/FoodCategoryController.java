@@ -3,13 +3,7 @@ package com.velvetvictory.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.velvetvictory.dto.request.FoodCategoryRequest;
 import com.velvetvictory.dto.response.CustomEntityResponse;
@@ -18,6 +12,8 @@ import com.velvetvictory.service.FoodCategoryService;
 
 @RestController
 @RequestMapping("/velvet")
+@CrossOrigin
+		//(origins = "http://localhost:3000")
 public class FoodCategoryController {
 
 	@Autowired
@@ -43,12 +39,12 @@ public class FoodCategoryController {
 	{
 		try
 		{
-			System.out.println("in try block");
+			System.out.println("in category try block");
 			return new ResponseEntity(new EntityResponse(foodCategoryService.getAllFoodCategory(), 0), HttpStatus.OK);
 		}
 		catch(Exception e)
 		{
-			System.out.println("in catch block");
+			System.out.println("in category catch block");
 			return new ResponseEntity(new CustomEntityResponse(e.getMessage(), -1), HttpStatus.OK);
 		}
 	}

@@ -63,6 +63,7 @@ const AboutUs = () => {
                 <div className="flex_container2">
                         <img className="officeImage"  src={work3}></img>
                         <img className="officeImage"  src={work4}></img>
+                        <img className="officeImage" src={work1}></img>
                 </div>
             </div>
         </div>

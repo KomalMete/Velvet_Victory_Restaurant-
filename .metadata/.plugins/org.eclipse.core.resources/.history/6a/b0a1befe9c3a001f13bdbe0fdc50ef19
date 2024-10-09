@@ -1,5 +1,0 @@
-package com.velvetvictory.dto.request;
-
-public class ChangePasswordDTO {
-
-}

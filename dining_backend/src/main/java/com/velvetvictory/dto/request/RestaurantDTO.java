@@ -21,4 +21,6 @@ public class RestaurantDTO
 	
 	private String restaurantName;
 
+	private String restaurantImage;
+
 }

@@ -25,7 +25,9 @@ const Footer =()=>{
             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4' style={{marginTop : '55px'}}>
               <h6 className='text-uppercase fw-bold mb-4' style={{ fontWeight : 250, fontSize: '34px', marginTop : '45px'}}>
                 <MDBIcon icon="gem" className="me-3"  />
-                Velvet Victory
+                <a href='/'>
+                  Velvet Victory
+                </a>
               </h6>
             </MDBCol>
 

@@ -1,9 +1,6 @@
 package com.velvetvictory.serviceImpl;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.transaction.Transactional;
 
@@ -52,8 +49,16 @@ public class RestaurantsServiceImpl implements RestaurantsService{
 
 	@Override
 	public Object getAllRestaurants() {
-		// TODO Auto-generated method stub
-		return restaurantRepo.findAll();
+
+		System.out.println("in restaurant service block");
+		List<Restaurants> restaurants = restaurantRepo.findAll();
+//		List<String> restaurantNames = null;
+//		for(Restaurants restaurants1 : restaurants)
+//		{
+//			restaurantNames.add(restaurants1.getRestaurantName());
+//		}
+
+		return restaurants;
 	}
 
 	@Override
@@ -93,7 +98,7 @@ public class RestaurantsServiceImpl implements RestaurantsService{
 		//Set<Food> food = foodRepo.findByFoodCategoryCategoryName(foodCategory.getCategoryName());
 		List<Long> foodIds = foodRepo.getFoodIdsByCategory(foodCategoryId);
 		
-		//System.out.println(foodIds);
+		System.out.println(foodIds);
 		List<Long> restaurantIds = new ArrayList<Long>();
 		
 		List<Restaurants> restaurantList = new ArrayList<>();
@@ -112,6 +117,7 @@ public class RestaurantsServiceImpl implements RestaurantsService{
 			
 			restaurantDTO.setId(restaurants2.getId());
 			restaurantDTO.setRestaurantName(restaurants2.getRestaurantName());
+			restaurantDTO.setRestaurantImage(restaurants2.getRestaurantImage());
 			
 			restaurants.add(restaurantDTO);
 		}

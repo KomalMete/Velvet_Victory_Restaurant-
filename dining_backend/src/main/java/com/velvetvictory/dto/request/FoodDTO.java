@@ -29,5 +29,7 @@ public class FoodDTO {
 	private double price;
 	
 	private String image;
+
+	private String restaurantName;
 	
 }

@@ -1,10 +1,14 @@
 package com.velvetvictory.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.velvetvictory.dto.request.OrderDTO;
 import com.velvetvictory.dto.request.PaymentDTO;
+import com.velvetvictory.models.Customer;
 import com.velvetvictory.models.Orders;
 import com.velvetvictory.models.Payment;
 import com.velvetvictory.repository.CustomerRepository;
@@ -45,6 +49,38 @@ public class OrderServiceImpl implements OrderService {
 		
 		orderRepository.save(order);
 		return "Order placed successfully..";
+	}
+
+	public Object getAllOrders(String customerEmail)
+	{
+		Customer customer = customerRepository.findByEmail(customerEmail);
+		
+		List<Orders> orders = orderRepository.getAllOrdersFromCustomerId(customer.getId());
+		
+		List<OrderDTO> listOfOrders = new ArrayList<OrderDTO>();
+		
+			for(Orders order : orders)
+			{
+				OrderDTO orderDTO = new OrderDTO();
+				orderDTO.setOrderId(order.getOrderId());
+				orderDTO.setPaymentId(order.getPaymentId());
+				orderDTO.setStatus(order.getStatus());
+				orderDTO.setTotalPrice(order.getTotalPrice());
+				orderDTO.setAddress(order.getAddress());
+				orderDTO.setCustomer(customer);
+				orderDTO.setRestaurant(order.getRestaurant());
+				
+				listOfOrders.add(orderDTO);
+			}
+		
+		if(!listOfOrders.isEmpty())
+		{
+			return listOfOrders;
+		}
+		else
+		{
+			return "No orders placed yet..";
+		}
 	}
 
 }
