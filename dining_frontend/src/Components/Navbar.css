@@ -1,9 +1,10 @@
 .navbar-container{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 80px;
     width: 100%;
+    padding: 0 20px;
 }
 
 .search-contaier {
@@ -18,4 +19,20 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.restro-name{
+  font-size: 40px;
+  font-weight: 900;
+  margin-right: 250px;
+  margin-left: 20px;
+  font-style: italic;
+}
+
+.content{
+  color: grey;
+}
+
+.content:hover{
+  color: black;
 }

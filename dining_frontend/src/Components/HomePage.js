@@ -1,15 +1,30 @@
 import { useState, useEffect } from "react";
 import "./HomePage.css";
-import HomePage_Image1 from "../Images/HomePage_Image1.webp"
+import HomePage_Image1 from "../Images/homePageZomatoImage.png"
 import { useNavigate } from "react-router-dom";
-import About_us1 from '../Images/About_us1.jpg';
 import axios from 'axios';
 import { url } from "./URL/constant";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage =() =>{
 
     const [category, setCategory] = useState([]);
     const [restaurants, setRestaurants] = useState([]);
+    const [foodname, setFoodName] = useState("")
+
+    const handleSearch =()=> {
+        if(foodname.trim())
+        {
+            navigate(`${url}/food/searchByFoodName/${foodname}`)
+        }
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+          handleSearch();
+        }
+      };
 
     const navigate = useNavigate();
 
@@ -42,6 +57,14 @@ const HomePage =() =>{
             <div className="imageContainer">
                 <img className = "forImage5" src={HomePage_Image1}></img>
                 <h1 className="overlayText5">Velvet Victory</h1>
+                <div className="search-container">
+                    <FontAwesomeIcon icon={faSearch} className="search-icon" style={{ marginRight : "5px"}}/>
+                    <input className="search-box" placeholder = "Search for restaurant, cuisine, or a dish" 
+                            value={foodname} onChange={(e) => { setFoodName(e.target.value) }}
+                            onKeyDown={handleKeyDown}
+                            >
+                    </input>
+            </div>
             </div>
             
             <div className="row g-3 p-5 "  >

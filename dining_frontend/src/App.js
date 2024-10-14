@@ -12,9 +12,10 @@ function App() {
   return (
     <div className="App">
           <BrowserRouter>
+          
             <Routes>
-              <Route path="/" element={<Navbar />} />
-              <Route path="/home" element={<HomePage />} />
+              {/* <Route path="/" element={<Navbar />} /> */}
+              <Route path="/" element={<HomePage />} />
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/contactus" element={<ContactUs />} />
               <Route path="/restaurants_cat/:categoryId" element={<RestaurantsByCategory />} />
